@@ -39,9 +39,9 @@ public class Main {
 		
 		
 		System.out.println("\n\nEjercicio 5: Hora");
-		Hora h = new Hora(9, 34, 30);
+		Hora h = new Hora(9, 34, 50);
 		System.out.println(h.imprimirHora());			
-		for(int a=0;  a< 70; a++) {				
+		for(int a=0;  a< 100; a++) {				
 			h.Avance();
 			System.out.println(h.imprimirHora());					
 		}

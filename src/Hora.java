@@ -17,17 +17,17 @@ public class Hora {
 	private int segundo;
 	
 	public void setHora(int hora) {		
-		if(hora <=24 && hora >0)
+		if(hora <24 && hora >=0)
 			this.hora = hora;
 	}
 	
 	public void setMinuto(int minuto) {		
-		if(minuto<60 && minuto>0)
+		if(minuto<60 && minuto>=0)
 			this.minuto = minuto;
 	}
 	
 	public void setSegundo(int segundos) { 		
-		if(segundos<=60 && segundos>0)
+		if(segundos<60 && segundos>=0)
 			this.segundo=segundos;
 	}
 	
@@ -66,43 +66,29 @@ public class Hora {
 		return this.transformarHora()+ this.transformarMinuto()+this.transformarSegundo();
 	}
 	
-	public void Avance() {
-		
-		int segundos = this.getSegundo();			
-		if(segundos <= 60 && segundos >= 0) {
-			this.setSegundo(segundos +1);
-			if(segundos == 60) {
-				this.setSegundo(00);
-				this.setMinuto(this.getMinuto() +1);	
-			}
-			System.out.println("aumenta segundo");
+	public void Avance() {		
+		int segundos = this.getSegundo() + 1;		
+		if(segundos < 60) {
+			this.setSegundo(segundos);
 		}
 		else {
-			
-			
-			System.out.println("aumenta minuto");	
-		}
-		
-			
-			
-			
-			if(minuto > 0 && minuto < 60) {
-				
+			this.setSegundo(00);
+			int minutos = this.getMinuto() + 1;
+			if(minutos < 60 ) {
+				this.setMinuto(minutos);
 			}
 			else {
-				this.setMinuto(00);
-				int hora = this.getHora();
-				
-				if(hora >= 00 && hora < 24) {
-					this.setHora(hora +1);
+				this.setMinuto(00);	
+				int hora = this.getHora() + 1;
+				if(hora < 24) {							
+					this.setHora(hora);
 				}
-				else{
-					this.setHora(00);
-					this.setMinuto(00);
-					this.setSegundo(00);
-				}	
-			
-		}		
+				else {
+					this.setHora(00);							
+				}
+			}
+		}
+		
 	}
 	
 	public void Retroceder() {		
